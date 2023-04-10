@@ -16,7 +16,7 @@ public class HikariCache {
     public static Connection getConnection(String database) throws SQLException {
         DataSourceCache dataSourceCache = CACHE.get(database);
         if(dataSourceCache == null) {
-            throw new IllegalArgumentException(String.format("Unknown database %s", database));
+            throw new SQLException(String.format("Unknown cached database %s", database));
         }
         return dataSourceCache.getDataSource().getConnection();
     }
